@@ -1,4 +1,4 @@
-package handlers
+package config
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"file-sharing-app/config"
+	"app/config"
 )
 
 func UploadHandler(w http.ResponseWriter, r *http.Request) {
