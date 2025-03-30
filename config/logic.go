@@ -1,7 +1,7 @@
-package models
+package config
 
 import (
-	"file-sharing-app/config"
+	"app/config"
 )
 
 type User struct {
