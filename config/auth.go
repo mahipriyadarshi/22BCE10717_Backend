@@ -1,10 +1,10 @@
-package handlers
+package config
 
 import (
 	"encoding/json"
 	"net/http"
 
-	"file-sharing-app/models"
+	"app/models"
 )
 
 func RegisterHandler(w http.ResponseWriter, r *http.Request) {
