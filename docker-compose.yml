@@ -1,0 +1,44 @@
+version: '3'
+services:
+  app:
+    build: .
+    ports:
+      - "5050:5050"
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=Pranja107*
+      - DB_NAME=DB01
+      - REDIS_HOST=redis
+      - JWT_SECRET_KEY=your_secure_secret_key
+      - AWS_ACCESS_KEY_ID=your_aws_key
+      - AWS_SECRET_ACCESS_KEY=your_aws_secret
+      - AWS_REGION=us-east-1
+      - S3_BUCKET=your-bucket-name
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Pranja107*
+      POSTGRES_DB: DB01
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    command: redis-server --requirepass your_redis_password
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:
